@@ -16,6 +16,7 @@ class ProductsController extends Controller
     public function index()
     {
         $data = Product::all();
+//        Lên google tìm cách khác, t nhớ 1 câu eloquent là xong thôi
         $products = collect([]);
         foreach ($data as $row) {
             $stmt = [];
@@ -85,7 +86,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        dd(1);
+        $product = Product::find($id);
+        return view('admin.product.update', ['id' => $id, 'product' => $product]);
     }
 
     /**
